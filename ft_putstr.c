@@ -6,7 +6,7 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:25:54 by alejandj          #+#    #+#             */
-/*   Updated: 2025/01/27 12:55:49 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:35:41 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putstr(char *s)
 {
 	int	i;
-	int size;
+	int	size;
 
 	if (!s)
 		return (0);

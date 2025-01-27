@@ -17,10 +17,5 @@ int main(void)
 
 int main(void)
 {
-    int a = 1;
-    void *p;
-
-    p = &a;
-
-    printf("%p", p);
+    printf("%d", INT_MIN);
 }
