@@ -6,7 +6,7 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:38:49 by alejandj          #+#    #+#             */
-/*   Updated: 2025/01/28 14:27:59 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:31:15 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (size);
 }
-
+/*
 int	main(void)
 {
 	// SI EL PUNTERO ES NULL DEVOLVER (ni)
@@ -107,4 +107,4 @@ int	main(void)
 	ft_printf("Copia: %%\n");
 	ft_printf("\n");
 }
-
+*/
