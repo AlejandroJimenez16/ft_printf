@@ -6,7 +6,7 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:38:49 by alejandj          #+#    #+#             */
-/*   Updated: 2025/01/28 12:59:01 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:03:27 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	apply_format(va_list args, char c)
 	if (c == 's')
 		size += ft_putstr(va_arg(args, char *));
 	if (c == 'p')
-		size += ft_putstr("0x") + ft_putnbr_base(va_arg(args, size_t), "0123456789abcdef");
+		size += ft_putstr("0x") + ft_putnbr_base(va_arg(args, size_t),
+				"0123456789abcdef");
 	if (c == 'd')
 		size += ft_putnbr_base(va_arg(args, int), "0123456789");
 	if (c == 'i')
@@ -61,50 +62,45 @@ int	ft_printf(char const *str, ...)
 	return (size);
 }
 /*
-int main(void)
+int	main(void)
 {
+	int	num;
+	int	*ptr;
+
 	ft_printf("Caracter: \n");
 	printf("Original: %c\n", 'A');
 	ft_printf("Copia: %c\n", 'A');
 	ft_printf("\n");
-
 	ft_printf("Strings: \n");
 	printf("Original: %s\n", "Hola");
 	ft_printf("Copia: %s\n", "Hola");
 	ft_printf("\n");
-	
 	ft_printf("Punteros (p): \n");
-	int num = 42;
-    int *ptr = &num;
+	num = 42;
+	ptr = &num;
 	printf("Original: %p\n", (void *)ptr);
 	ft_printf("Copia: %p\n", (void *)ptr);
 	ft_printf("\n");
-	
 	ft_printf("Enteros (d): \n");
 	printf("Original: %d\n", 123);
 	ft_printf("Copia: %d\n", 123);
 	ft_printf("\n");
-
 	ft_printf("Enteros (i): \n");
 	printf("Original: %i\n", 234);
 	ft_printf("Copia: %i\n", 234);
 	ft_printf("\n");
-
 	ft_printf("Enteros (u): \n");
 	printf("Original: %u\n", 345);
 	ft_printf("Copia: %u\n", 345);
 	ft_printf("\n");
-
 	ft_printf("Hexadecimal (x): \n");
 	printf("Original: %x\n", 456);
 	ft_printf("Copia: %x\n", 456);
 	ft_printf("\n");
-
 	ft_printf("Hexadecimal (X): \n");
 	printf("Original: %X\n", 456);
 	ft_printf("Copia: %X\n", 456);
 	ft_printf("\n");
-
 	ft_printf("Porcentaje: \n");
 	printf("Original: %%\n");
 	ft_printf("Copia: %%\n");
