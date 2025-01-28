@@ -1,61 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 15:53:46 by alejandj          #+#    #+#             */
-/*   Updated: 2025/01/27 17:23:12 by alejandj         ###   ########.fr       */
+/*   Created: 2025/01/28 11:37:18 by alejandj          #+#    #+#             */
+/*   Updated: 2025/01/28 12:44:51 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	special_cases(int n)
+int	is_unsigned(int nbr)
 {
-	int	size;
-
-	size = 0;
-	if (n == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		size += 11;
-		return (size);
-	}
-	if (n == 0)
-	{
-		write(1, "0", 1);
-		size += 1;
-		return (size);
-	}
-	return (size);
+	if (nbr > 0)
+		return (1);
+	return (0);
 }
 
-int	ft_putnbr(int n)
+int	convert_to_base(int nbr, char *base, int base_size, char *temp)
 {
-	char	temp[10];
+	int	i;
+
+	i = 0;
+	while (nbr > 0)
+	{
+		temp[i] = base[nbr % base_size];
+		i++;
+		nbr = nbr / base_size;
+	}
+	return (i);
+}
+
+int	ft_putnbr_base(int nbr, char *base)
+{
 	int		i;
 	int		size;
+	int		base_size;
+	char	temp[100];
 
 	size = 0;
-	if (n == INT_MIN || n == 0)
-	{
-		size += special_cases(n);
-		return (size);
-	}
-	if (n < 0)
+	base_size = 0;
+	if (nbr == 0)
+		size += ft_putchar('0');
+	base_size = ft_strlen(base);
+	if (base_size < 2)
+		return (0);
+	if (!is_unsigned(nbr) && nbr < 0)
 	{
 		size += ft_putchar('-');
-		n = -n;
+		nbr = -nbr;
 	}
-	i = 0;
-	while (n > 0)
-	{
-		temp[i] = (n % 10) + '0';
-		n = n / 10;
-		i++;
-	}
+	i = convert_to_base(nbr, base, base_size, temp);
 	while (i > 0)
 	{
 		size += ft_putchar(temp[i - 1]);
