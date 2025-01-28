@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC =	ft_printf.c			\
 		ft_putchar.c		\
@@ -9,10 +9,10 @@ SRC =	ft_printf.c			\
 		ft_putstr.c			\
 		ft_strlen.c			\
 
-OBEJCTS = $(SRC:.c=.o)
+OBJECTS = $(SRC:.c=.o)
 
-$(NAME): $(OBEJCTS)
-	ar rcs $(NAME) $(OBEJCTS)
+$(NAME): $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
 	@echo "Library $(NAME) created."
 
 all: $(NAME)
@@ -21,12 +21,10 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJECTS) $(OBJECTS_BONUS)
+	@rm -rf $(OBJECTS)
 	@echo "Object files removed."
 
 fclean: clean
 	@rm -rf $(NAME)
 	@echo "Library $(NAME) removed"
-
-re: fclean all
-		
+re: fclean all	
