@@ -6,11 +6,26 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:38:49 by alejandj          #+#    #+#             */
-/*   Updated: 2025/01/28 14:31:15 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:48:32 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	p_format(va_list args)
+{
+	void	*ptr;
+	int		size;
+
+	size = 0;
+	ptr = va_arg(args, void *);
+	if (ptr == NULL)
+		size += ft_putstr("(nil)");
+	else
+		size += ft_putstr("0x") + ft_putnbr_base(va_arg(args, int),
+				"0123456789abcdef");
+	return (size);
+}
 
 int	apply_format(va_list args, char c)
 {
@@ -22,8 +37,7 @@ int	apply_format(va_list args, char c)
 	if (c == 's')
 		size += ft_putstr(va_arg(args, char *));
 	if (c == 'p')
-		size += ft_putstr("0x") + ft_putnbr_base(va_arg(args, size_t),
-				"0123456789abcdef");
+		size += p_format(args);
 	if (c == 'd')
 		size += ft_putnbr_base(va_arg(args, int), "0123456789");
 	if (c == 'i')
@@ -63,9 +77,7 @@ int	ft_printf(char const *str, ...)
 }
 /*
 int	main(void)
-{
-	// SI EL PUNTERO ES NULL DEVOLVER (ni)
-	
+{	
 	ft_printf("Caracter: \n");
 	printf("Original: %c\n", 'A');
 	ft_printf("Copia: %c\n", 'A');

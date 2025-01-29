@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 SRC =	ft_printf.c			\
 		ft_putchar.c		\
@@ -27,4 +27,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@echo "Library $(NAME) removed"
-re: fclean all	
+
+re: fclean all
+
+.PHONY: all clean fclean re
