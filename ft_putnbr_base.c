@@ -6,18 +6,11 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:37:18 by alejandj          #+#    #+#             */
-/*   Updated: 2025/02/04 14:16:42 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:58:05 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	is_unsigned(int nbr)
-{
-	if (nbr > 0)
-		return (1);
-	return (0);
-}
 
 int	convert_to_base(int nbr, char *base, int base_size, char *temp)
 {
@@ -38,7 +31,7 @@ int	ft_putnbr_base(int nbr, char *base)
 	int		i;
 	int		size;
 	int		base_size;
-	char	temp[100];
+	char	temp[10];
 
 	size = 0;
 	base_size = 0;
@@ -47,7 +40,7 @@ int	ft_putnbr_base(int nbr, char *base)
 	base_size = ft_strlen(base);
 	if (base_size < 2)
 		return (0);
-	if (!is_unsigned(nbr) && nbr < 0)
+	if (nbr < 0)
 	{
 		size += ft_putchar('-');
 		nbr = -nbr;
