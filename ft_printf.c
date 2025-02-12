@@ -6,7 +6,7 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:38:49 by alejandj          #+#    #+#             */
-/*   Updated: 2025/02/12 16:32:43 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:37:13 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	p_format(va_list args)
 	{
 		size += ft_putstr("0x");
 		size += ft_print_pointer((unsigned long)ptr, "0123456789abcdef");
-	}	
+	}
 	return (size);
 }
 
@@ -67,15 +67,15 @@ int	ft_printf(char const *str, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-        {
-            i++;
-            size += apply_format(args, str[i]);
-        }
-        else
-        {
-            size += ft_putchar(str[i]);
-        }
-        i++;
+		{
+			i++;
+			size += apply_format(args, str[i]);
+		}
+		else
+		{
+			size += ft_putchar(str[i]);
+		}
+		i++;
 	}
 	va_end(args);
 	return (size);
