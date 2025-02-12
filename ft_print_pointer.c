@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:55:50 by alejandj          #+#    #+#             */
-/*   Updated: 2025/02/12 13:53:23 by alejandj         ###   ########.fr       */
+/*   Created: 2025/02/12 13:59:38 by alejandj          #+#    #+#             */
+/*   Updated: 2025/02/12 14:00:40 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_unsigned(unsigned int nbr)
+int	ft_print_pointer(long nbr, char *base)
 {
-	int	size;
+	int		size;
+	int		base_size;
 
 	size = 0;
+	base_size = ft_strlen(base);
 	if (nbr == 0)
 		size += ft_putchar('0');
-	if (nbr >= 10)
-		size += ft_putnbr_unsigned(nbr / 10);
-	size += ft_putchar(nbr % 10 + '0');
+	if (nbr >= base_size)
+		size += ft_print_pointer(nbr / base_size, base);
+	size += ft_putchar(base[nbr % base_size]);
 	return (size);
 }
