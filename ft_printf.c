@@ -6,7 +6,7 @@
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:38:49 by alejandj          #+#    #+#             */
-/*   Updated: 2025/02/12 16:37:13 by alejandj         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:36:40 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ int	apply_format(va_list args, char c)
 	if (c == 'p')
 		size += p_format(args);
 	if (c == 'd')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789");
+		size += ft_putnbr_dec(va_arg(args, int));
 	if (c == 'i')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789");
+		size += ft_putnbr_dec(va_arg(args, int));
 	if (c == 'u')
 		size += ft_putnbr_unsigned(va_arg(args, unsigned int));
 	if (c == 'x')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789abcdef");
+		size += ft_putnbr_hex(va_arg(args, int), "0123456789abcdef");
 	if (c == 'X')
-		size += ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF");
+		size += ft_putnbr_hex(va_arg(args, int), "0123456789ABCDEF");
 	if (c == '%')
 		size += ft_putchar('%');
 	return (size);

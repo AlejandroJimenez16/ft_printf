@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejandj <alejandj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 11:37:18 by alejandj          #+#    #+#             */
-/*   Updated: 2025/02/13 13:52:25 by alejandj         ###   ########.fr       */
+/*   Created: 2025/02/18 11:30:25 by alejandj          #+#    #+#             */
+/*   Updated: 2025/02/18 11:36:19 by alejandj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_hex(unsigned int nbr, char* base)
 {
 	int		size;
-	int		base_size;
 
 	size = 0;
-	base_size = ft_strlen(base);
-	if (nbr == 0)
-		return (size += ft_putchar('0'));
-	if (nbr == -2147483648)
-		return (size += ft_putstr("-2147483648"));
-	if (nbr < 0)
-	{
-		size += ft_putchar('-');
-		nbr = -nbr;
-	}
-	if (nbr >= base_size)
-		size += ft_putnbr_base(nbr / base_size, base);
-	size += ft_putchar(base[nbr % base_size]);
+	if (nbr >= 16)
+		size += ft_putnbr_hex(nbr / 16, base);
+	size += ft_putchar(base[nbr % 16]);
 	return (size);
 }
